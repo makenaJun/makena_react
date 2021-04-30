@@ -1,0 +1,19 @@
+.footer{
+	height: 30px;
+	background-color: #3b1127;
+	text-align: center;
+	flex-shrink: 0;
+	position: relative;
+	color: #ffbb00;
+}
+.version{
+	position: absolute;
+	font-size: 11px;
+	top: 8px;
+	left: 15px;
+	color: rgb(121, 121, 121);
+}
+.copyright{
+	font-size: 12px;
+	margin-top: 8px;
+}
