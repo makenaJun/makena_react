@@ -1,0 +1,20 @@
+.newsTitle {
+	background-color: #272727;
+	color: #fff;
+	padding-left: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 32px;
+}
+.newsContent {
+	padding: 10px;
+}
+
+// Home Page
+.fotoHomeContent {
+	width: 200px;
+	max-height: 200px;
+	float: left;
+	padding: 5px 15px 5px 0;
+}

@@ -25,7 +25,15 @@ function App() {
             <Route path={'*'} render={() => <NotFoundPage />} />
           </Switch>
         </main>
-        <Sidebar />
+        <Sidebar htmlCss={161}
+        nativJs={199}
+        reactJs={192}
+        typeScript={88}
+        otherTopicsIt={88}
+        totalProgress={728}
+        elapsedTime={177}
+        dayOfStudy={'дней'}
+        updateDate={'29.04.2021'} />
       </div>
       <Footer />
     </div>

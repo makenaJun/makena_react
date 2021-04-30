@@ -1,5 +1,23 @@
+$maxWidthSidebar: 250px;
+
 .sidebar{
 	width: 100%;
-	max-width: 250px;
+	max-width: $maxWidthSidebar;
  	border: 1px solid #272727;
+}
+.sidebarTitle {
+	background-color: #272727;
+	color: #fff;
+	padding-left: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 32px;
+}
+.sidebarContent {
+	padding: 10px;
+}
+.dateUpdated {
+	text-align: center;
+	background-color: #b4b4b4;
 }
