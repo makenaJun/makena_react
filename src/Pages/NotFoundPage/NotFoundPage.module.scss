@@ -1,0 +1,44 @@
+.wrappNotFound{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sign{
+    height: 120px;
+    width: 120px;
+    transform: rotate(45deg);
+    border: 4px dashed #000;
+    background-color: #febf0f;
+    position: relative;
+    margin: 100px 0px 60px 0px;
+}
+.signInner{
+    position: absolute;
+    top: 50px;
+    left: 18px;
+    font-size: 50px;
+    font-weight: bold;
+    transform: rotate(-45deg);
+}
+.title{
+    font-weight: bold;
+    font-size: 35px;
+    margin: 10px 0 10px 0;
+}
+.description{
+    margin: 20px 0px;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+.button{
+    padding: 1px 4px 4px 4px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background-color: #febf0f;
+    color: #191919;
+    border: 2px dashed #191919 ;
+    &:hover{
+        background-color: #ebac00;
+        color: #191919;
+    }
+}
