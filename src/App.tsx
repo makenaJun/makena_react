@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { Provider } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom';
 import styles from './App.module.scss';
@@ -10,6 +11,7 @@ import { BlogPage } from './Pages/BlogPage/BlogPage';
 import { HomePage } from './Pages/HomePage/HomePage';
 import { MaterialsPage } from './Pages/MaterialsPage/MaterialsPage';
 import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
+import store from './redux/store';
 
 function App() {
   return (
@@ -26,14 +28,14 @@ function App() {
           </Switch>
         </main>
         <Sidebar htmlCss={161}
-        nativJs={199}
-        reactJs={192}
-        typeScript={88}
-        otherTopicsIt={88}
-        totalProgress={728}
-        elapsedTime={177}
-        dayOfStudy={'дней'}
-        updateDate={'29.04.2021'} />
+          nativJs={199}
+          reactJs={192}
+          typeScript={88}
+          otherTopicsIt={88}
+          totalProgress={728}
+          elapsedTime={177}
+          dayOfStudy={'дней'}
+          updateDate={'29.04.2021'} />
       </div>
       <Footer />
     </div>
@@ -43,8 +45,12 @@ function App() {
 
 export const MakenaApp: FC = () => {
   return (
+
     <BrowserRouter>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </BrowserRouter>
+
   )
 };
