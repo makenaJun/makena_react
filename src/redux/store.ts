@@ -1,9 +1,11 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk from "redux-thunk";
 import pageReducer from "./PageReducer";
+import ProgressReducer from "./ProgressReducer";
 
 const rootReducers = combineReducers({
-    postsPage: pageReducer
+    postsPage: pageReducer,
+    progress: ProgressReducer
 })
 
 

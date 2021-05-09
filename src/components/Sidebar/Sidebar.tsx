@@ -1,30 +1,26 @@
-import React, { FC } from 'react';
+import React, {FC, useEffect} from 'react';
 import { Delimiter } from '../common/Delimiter/Delimiter';
 import styles from './Sidebar.module.scss';
+import {useDispatch, useSelector} from "react-redux";
+import {getProgress} from "../../redux/ProgressReducer";
+import {selectProgress} from "../../redux/ProgressSelector";
 
-type PropsType = {
-    htmlCss: number,
-    nativJs: number,
-    reactJs: number,
-    typeScript: number,
-    otherTopicsIt: number,
-    totalProgress: number,
-    elapsedTime: number,
-    dayOfStudy: string,
-    updateDate: string
-}
+export const Sidebar: FC = () => {
 
-export const Sidebar: FC<PropsType> = (props) => {
-    const { htmlCss,
-        nativJs,
-        reactJs,
-        typeScript,
-        otherTopicsIt,
-        totalProgress,
-        elapsedTime,
-        dayOfStudy,
-        updateDate
-    } = props;
+    const progress = useSelector(selectProgress);
+
+    const { htmlCss, nativJs, reactJs, typeScript, otherTopicsIt,
+        totalProgress, elapsedTime, dayOfStudy, updateDate } = progress ;
+
+
+
+
+        const dispatch = useDispatch();
+
+        useEffect( () => {
+            dispatch(getProgress())
+        }, [dispatch])
+
     return (
         <aside className={styles.sidebar}>
             <div>
@@ -42,7 +38,7 @@ export const Sidebar: FC<PropsType> = (props) => {
             <Delimiter />
             Итого <span>{totalProgress}</span>ч.
             <Delimiter />
-            Обучаюсь {elapsedTime + dayOfStudy}
+            Обучаюсь {elapsedTime  + ' '  + dayOfStudy}
                 </div>
                 <div className={styles.dateUpdated}>Последнее обновление <span>{updateDate}</span></div>
             </div>
