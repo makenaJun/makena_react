@@ -1,0 +1,19 @@
+.paginationBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    font-size: 15px;
+    margin: 2px;
+
+    &:hover {
+      cursor: pointer;
+
+      &:disabled {
+        cursor: default;
+      }
+    }
+
+  }
+}

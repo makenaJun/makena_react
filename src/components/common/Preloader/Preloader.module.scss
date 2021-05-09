@@ -1,0 +1,21 @@
+$duration: 1200ms;
+.loader {
+	border: 14px solid #dadada;
+	border-radius: 50%;
+	border-top: 14px solid #97163d;
+	border-bottom: 14px solid #97163d;
+	width: 80px;
+	height: 80px;
+	-webkit-animation: spin $duration linear infinite;
+	animation: spin $duration linear infinite;
+  }
+  
+  @-webkit-keyframes spin {
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+  }

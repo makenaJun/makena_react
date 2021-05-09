@@ -7,11 +7,10 @@ import { Footer } from './components/Footer/Footer';
 import { Header } from './components/Header/Header';
 import { Menu } from './components/Menu/Menu';
 import { Sidebar } from './components/Sidebar/Sidebar';
-import { BlogPage } from './Pages/BlogPage/BlogPage';
+import { PostsPage } from './Pages/PostsPage/PostsPage';
 import { HomePage } from './Pages/HomePage/HomePage';
-import { MaterialsPage } from './Pages/MaterialsPage/MaterialsPage';
-import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
 import store from './redux/store';
+import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
 
 function App() {
   return (
@@ -22,8 +21,8 @@ function App() {
         <main className={styles.mainContent}>
           <Switch>
             <Route exact path={'/'} render={() => <HomePage />} />
-            <Route path={'/blog'} render={() => <BlogPage />} />
-            <Route path={'/materials'} render={() => <MaterialsPage />} />
+            <Route path={'/blog'} render={() => <PostsPage page={'BLOG'} />} />
+            <Route path={'/materials'} render={() => <PostsPage page={'MATERIALS'} />} />
             <Route path={'*'} render={() => <NotFoundPage />} />
           </Switch>
         </main>
@@ -40,17 +39,15 @@ function App() {
       <Footer />
     </div>
   );
-};
+}
 
 
 export const MakenaApp: FC = () => {
   return (
-
     <BrowserRouter>
       <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>
-
   )
 };
