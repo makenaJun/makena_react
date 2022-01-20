@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import { Delimiter } from '../../components/common/Delimiter/Delimiter';
+import { Delimiter } from '../../../components/common/Delimiter/Delimiter';
 
 type PropsType = {
     title: string,

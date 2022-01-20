@@ -1,4 +1,10 @@
 import {PagesType} from "../redux/PageReducer";
+import axios from "axios";
+
+const instance = axios.create({
+    baseURL: 'http://localhost:8080/api/'
+})
+
 
 
 export type PageContentType = Array<ContentType>
@@ -7,7 +13,7 @@ type ContentType = {
     content: string
 }
 type ResponseObjectType = {
-    items: [] | Array<ContentType>,
+    data: [] | Array<ContentType>,
     totalCount: number
 }
 const materialsContent: PageContentType = [
@@ -79,180 +85,17 @@ const materialsContent: PageContentType = [
     </p>`
     }
 ];
-const blogContent: PageContentType = [
-    {
-        title: '07.05.2021',
-        content: `<p>
-              [#] Сегодня целый день изучал материалы по работе IT-INCUBTOR-а. Решил тестовое, 
-              и оплатил первый взнос за обучение в инкубаторе. Решил пойти учиться в инкубатор
-               из-за чувства, незнания что конкретно учить и начинаю распыляться на левые штучки.
-                Ссылки на материалы к сожалению не могу скидывать, но вкратце буду описывать 
-                учебный процесс. Старт обучения уже 24 МАЯ 2021!
-            </p>`
-    },
-    {
-        title: '06.05.2021',
-        content: `<p>
-              [#] Дописал функционал запроса и получения постов, надо сделать pagination и sidebar.
-            </p>
-             <p>
-            [#] Посмотрел <a href="https://www.youtube.com/watch?v=x5YssUtaynM" title="10. Вайтишный стрим - куда 
-            пропал, про планы, будет ли дальше контент" 
-            target="_blank">10. Вайтишный стрим - куда пропал, про планы, будет ли дальше контент</a>
-            </p>`
-    },
-    {
-        title: '05.05.2021',
-        content: `
-        <p>
-        [#] Написал фэйковый API, все отлично функционирует остается настроить визуал.
-         </p>
-         `
-    },
-    {
-        title: '04.05.2021',
-        content: `
-        <p>
-        [#] Продолжил написание BLL, добавил redux-thunk и React-Html-Parser, думаю за 2 дня закончу BLL.
-      </p>
-      <p>
-      [#] Посмотрел <a href="https://www.youtube.com/watch?v=B3tF12UWIsQ&list=PLcvhF2Wqh7DOjApuSClDESOjVt5_qKjoZ&index=15" 
-      title="#06 Night Show by Dimych 2020-10-15" target="_blank">#06 Night Show by Dimych 2020-10-15</a>
-      </p>
-      `
-    },
-    {
-        title: '03.05.2021',
-        content: `
-        <p>
-        [#] Начал написание BLL, добавил redux, react-redux, а также пришлось обновить модуль node-sass из-за обновления nodejs.
-        Первым делом создал store, закомбайнил пока один) reducer, добавил селекторы и обернул провайдером всё приложение.
-        </p>
-        <p>
-        [#] Посмотрел <a href="https://www.youtube.com/watch?v=Qu-oyzWIpjI" 
-        title="Как запускать Node.js приложения на своем сервере VDS" 
-        target="_blank">Как запускать Node.js приложения на своем сервере VDS</a>
-        </p>
-      `
-    },
-    {
-        title: '02.05.2021',
-        content: `
-        <p>
-              [#] Сегодня переустанавливал Windows. Перешел на 10-ку. Установил все нужные программы самых свежих версий [mongodb, nodejs]
-              без проблем. Буду потихоньку привыкать)).
-            </p>
-            <p>
-              [#] А также сегодня купил второй монитор для более быстрой разработки.
-            </p>
-            <p>
-              [#] Надо продумать Архитектуру блога, и завтра продолжить разработку.
-            </p>
-            <p>
-            [#] Посмотрел <a href="https://www.youtube.com/watch?v=052og_Ics30&list=PLcvhF2Wqh7DOjApuSClDESOjVt5_qKjoZ&index=16" 
-            title="#05 Night Show by Dimych 2020-10-08" target="_blank">#05 Night Show by Dimych 2020-10-08</a>
-            </p>
-        `
-    },
-    {
-        title: '01.05.2021',
-        content: `<p>
-              [#] Сегодня начал пробовать mongodb, но столкнулся с совместимостью с windows 7, завтра буду переходить на windows 10.
-            </p>
-            <p>
-            <b>Итоги Апреля 2021 года [часов]: HTML & CSS [0], JavaScript [0], React.js [25], 
-            TypeScript [79], общие познания IT [20] => Всего [124]</b>
-            </p>`
-    },
-    {
-        title: '30.04.2021',
-        content: `<p>
-              [#] Перевел всю верстку на React, а данные заHARDCODил, завтра уже буду заниматься BLL.
-            </p>
-            <p>
-              [#] Посмотрел <a href="https://www.youtube.com/watch?v=N9cXLf3oL-M&list=PLcvhF2Wqh7DOjApuSClDESOjVt5_qKjoZ&index=17"
-               title="#04 Night Show by Dimych 2020-09-30" target="_blank">#04 Night Show by Dimych 2020-09-30</a>
-            </p>`
-    },
-    {
-        title: '29.04.2021',
-        content: `<p>
-              [#] Сделал рефакторин кода чата и выложил на <a href="https://github.com/makenaJun/Let-s-Chat" 
-              title="Let's Chat - GitHub" target="_blank">Let's Chat - GitHub</a>.
-            </p>
-            <p>
-              [#] Есть интерес развернуть чат на сервере, но придется заказать VPS. 2 мая оформлю VPS и буду пробывать сделать deploy.
-            </p>
-            <p>
-              [#] Посмотрел <a href="https://www.youtube.com/watch?v=jRDV5hXxFu8&list=PLcvhF2Wqh7DOjApuSClDESOjVt5_qKjoZ&index=17" 
-              title="#03 Night Show by Dimych 2020-09-23" target="_blank">#03 Night Show by Dimych 2020-09-23</a>
-            </p>
-            <p>
-              [#] Начал переписывать данный блог на React используя TypeScript. 
-              <a href="https://github.com/makenaJun/makena_react" title="Makena blog react - GitHub"
-               target="_blank">Makena blog react - GitHub</a>. 
-               Если честно, стало напряжно обновлять блог, так как при добавлении новости надо делать сдвиг 
-               новостей вручную, а это на данный момент 9 страниц и они растут с каждым днем)) Буду реализовывать 
-               автоматизацию данного процесса!
-            </p>
-            <p>
-              [#] За сегодня добавил шапку и меню. Подключил и начал использовать SCSS.
-            </p>`
-    },
-    {
-        title: '28.04.2021',
-        content: `<p>
-              [#] Допилил чат! Завтра закину на GitHub, а сегодня только скриншоты.
-              </p>
-              <details class="details">
-              <summary>Скриншоты Let's Chat</summary>
-              Тут будут изображения
-            </details>
-            <p>
-              [#] Посмотрел <a href="https://www.youtube.com/watch?v=xBqyVr8L1Pc&list=PLcvhF2Wqh7DOjApuSClDESOjVt5_qKjoZ&index=19" title="#02 Night Show by Dimych 2020-09-16" target="_blank">#02 Night Show by Dimych 2020-09-16</a>
-            </p>
-            <p>
-              [#] Ссылки на видео по которым был реализован Backend, Frontend реализовал с подключением доп. библиотек (Formik, uuid, Yup). Очень было интересно реализовывать Backend, так как это совсем другой мир ;) <br />
-                <a href="https://www.youtube.com/watch?v=5uES64gckVQ" title="#1: Разработка простого чата на ReactJS + NodeJS + Socket.IO (for Junior)" target="_blank">#1: Разработка простого чата на ReactJS + NodeJS + Socket.IO (for Junior)</a>
-                <br />
-                <a href="https://www.youtube.com/watch?v=hWJlIJ_WSt0&t=10964s" title="#2: Разработка простого чата на ReactJS + NodeJS + Socket.IO (for Junior)" target="_blank">#2: Разработка простого чата на ReactJS + NodeJS + Socket.IO (for Junior)</a>
-            </p>`
-    },
-    {
-        title: '27.04.2021',
-        content: `<p>
-              [#] Чат осталось немного допилить. Завтра точно доделаю!
-            </p>
-            <p>
-              [#] Посмотрел <a href="https://www.youtube.com/watch?v=5UWux8WtR0c&list=PLcvhF2Wqh7DOjApuSClDESOjVt5_qKjoZ&index=27" 
-              title="#01 Night Show by Dimych 2020-09-09" target="_blank">#01 Night Show by Dimych 2020-09-09</a>
-            </p>`
-    }
-];
+
 const contentToDisplay = (page: PagesType, pageSize: number, currentPage: number) => {
     const responseObject: ResponseObjectType = {
-        items: [],
+        data: [],
         totalCount: 0
     }
     switch (page) {
-        case 'BLOG':
-            return {
-                ...responseObject,
-                items: blogContent.filter((content, index) => {
-                    const from = pageSize * (currentPage - 1);
-                    const to = pageSize * currentPage;
-                    if (index >= from && index < to) {
-                        return content;
-                    } else {
-                        return null;
-                    }
-                }),
-                totalCount: blogContent.length
-            }
         case "MATERIALS":
             return {
                 ...responseObject,
-                items: [...materialsContent],
+                data: [...materialsContent],
                 totalCount: materialsContent.length
             }
         default:
@@ -260,71 +103,14 @@ const contentToDisplay = (page: PagesType, pageSize: number, currentPage: number
     }
 };
 
-
-type ProgressStudyType = {
-    htmlCss: number,
-    nativJs: number,
-    reactJs: number,
-    typeScript: number,
-    otherTopicsIt: number,
-}
-export type ProgressResponseType = {
-    study: ProgressStudyType
-    totalProgress: number,
-    elapsedTime: number,
-    dayOfStudy: string,
-    updateDate: string
-}
-const progress = {
-    study: {
-        htmlCss: 161,
-        nativJs: 200,
-        reactJs: 192,
-        typeScript: 107,
-        otherTopicsIt: 111,
-    },
-    elapsedTime: 186,
-    updateDate: '09.05.2021'
-}
-const dayOfStudy = (elapsedTime: number) => {
-    const penultNum = elapsedTime.toString().slice(-2, -1);
-    const lastNum = elapsedTime.toString().slice(-1);
-
-    if (penultNum === '1') {
-        return 'дней';
-    } else if (lastNum === '1') {
-        return 'день';
-    } else if (lastNum === '2' || lastNum === '3' || lastNum === '4') {
-        return 'дня';
-    } else {
-        return 'дней';
-    }
-}
-const progressToDisplay = () => {
-    return {
-        ...progress,
-        totalProgress: Object.values(progress.study).reduce((acc, value) => acc += value),
-        dayOfStudy: dayOfStudy(progress.elapsedTime)
-    }
-}
-
-
-
 export const contentAPI = {
-    getContent(page: PagesType, pageSize = 10, currentPage = 1) {
-        return new Promise<ResponseObjectType>((resolve) => {
-                setTimeout(() => {
-                    resolve(contentToDisplay(page, pageSize, currentPage))
-                }, 1000)
-            }
-        )
+    getContent(page: PagesType, pageSize: number, currentPage: number) {
+        if(page === 'MATERIALS'){
+            return contentToDisplay(page, pageSize, currentPage);
+        }
+        return instance.get(`posts?page=${currentPage}&count=${pageSize}`).then(res => res.data)
     },
     getProgress() {
-        return new Promise<ProgressResponseType>((resolve) => {
-                setTimeout(() => {
-                    resolve(progressToDisplay())
-                }, 300)
-            }
-        )
+        return instance.get('progress').then(res => res.data.data);
     }
 };

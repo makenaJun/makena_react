@@ -2,10 +2,10 @@ import {contentAPI, PageContentType} from '../api/api';
 import {AppStateType, InferActionsTypes} from './store';
 import {ThunkAction} from 'redux-thunk';
 
-export type PagesType = 'HOME' | 'BLOG' | 'MATERIALS';
+export type PagesType = 'HELLO' | 'BLOG' | 'MATERIALS';
 
 const toggleTitle = (page: PagesType) => {
-    return (page === 'HOME') ? 'Обучение программированию. Начало моего пути.' :
+    return (page === 'HELLO') ? 'Обучение программированию. Начало моего пути.' :
         (page === 'BLOG') ? 'Блог' :
             (page === 'MATERIALS') ? 'Материалы для обучения' : 'Ошибка отображения заголовка';
 };
@@ -86,14 +86,14 @@ const actions = {
 }
 
 
-export const setPage = (page: PagesType, pageSize: number,
-                        currentPage: number): ThunkAction<void, AppStateType, unknown, ActionsType> => (
+export const setPage = (page: PagesType, pageSize: number = 10,
+                        currentPage: number = 1): ThunkAction<void, AppStateType, unknown, ActionsType> => (
     async (dispatch) => {
         dispatch(actions.isLoading(true));
         dispatch(actions.setTitlePage(page));
         dispatch(actions.setCurrentPage(currentPage));
         const response = await contentAPI.getContent(page, pageSize, currentPage);
-        dispatch(actions.setDisplayedPage(page, response.items));
+        dispatch(actions.setDisplayedPage(page, response.data));
         dispatch(actions.setTotalCountPosts(response.totalCount))
         dispatch(actions.isLoading(false));
     })

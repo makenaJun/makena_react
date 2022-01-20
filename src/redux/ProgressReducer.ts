@@ -1,6 +1,7 @@
-import {contentAPI, ProgressResponseType} from '../api/api';
+import {contentAPI} from '../api/api';
 import {AppStateType, InferActionsTypes} from './store';
 import {ThunkAction} from 'redux-thunk';
+import { createProgressObject } from '../helpers/progress';
 
 const initialState = {
     htmlCss: 0,
@@ -47,11 +48,36 @@ const actions = {
     )
 }
 
-
 export const getProgress = (): ThunkAction<void, AppStateType, unknown, ActionsType> => (
     async (dispatch) => {
-         const response = await contentAPI.getProgress();
-         dispatch(actions.setProgress(response))
+        const response = await contentAPI.getProgress();
+        const { htmlCss, nativJs,  reactJs, typeScript, backEnd, otherTopicsIt, elapsedTime, updateDate } = response;
+        const progress = {
+            study: { htmlCss, nativJs, reactJs, typeScript, backEnd, otherTopicsIt },
+            elapsedTime,
+            updateDate
+        };
+        dispatch(actions.setProgress(createProgressObject(progress)))
     })
 
 export default pageReducer;
+
+
+export interface ProgressResponseType extends ProgressObjectType {
+    totalProgress: number,
+    dayOfStudy: string
+}
+
+type StudyProgressType = {
+    htmlCss: number,
+    nativJs: number,
+    reactJs: number,
+    typeScript: number,
+    backEnd: number,
+    otherTopicsIt: number,
+}
+export type ProgressObjectType = {
+    study: StudyProgressType,
+    elapsedTime: number
+    updateDate: string
+}

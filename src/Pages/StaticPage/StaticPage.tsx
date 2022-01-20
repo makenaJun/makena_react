@@ -9,7 +9,7 @@ type PropsType = {
     page: PagesType
 }
 
-export const HomePage: FC<PropsType> = (props) => {
+export const StaticPage: FC<PropsType> = (props) => {
     const {page} = props;
 
     const titlePage = useSelector(selectTitlePage);

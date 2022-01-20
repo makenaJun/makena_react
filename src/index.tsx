@@ -5,8 +5,6 @@ import { MakenaApp } from './App';
 
 
 ReactDOM.render(
-  <React.StrictMode>
-      <MakenaApp />
-  </React.StrictMode>,
+      <MakenaApp />,
   document.getElementById('root')
 );

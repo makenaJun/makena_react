@@ -8,7 +8,7 @@ import { Header } from './components/Header/Header';
 import { Menu } from './components/Menu/Menu';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { PostsPage } from './Pages/PostsPage/PostsPage';
-import { HomePage } from './Pages/HomePage/HomePage';
+import { StaticPage } from './Pages/StaticPage/StaticPage';
 import store from './redux/store';
 import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
 
@@ -20,9 +20,9 @@ function App() {
       <div className={styles.contentBox}>
         <main className={styles.mainContent}>
           <Switch>
-            <Route exact path={'/'} render={() => <HomePage />} />
+            <Route exact path={'/'} render={() => <StaticPage page={'HELLO'} />} />
             <Route path={'/blog'} render={() => <PostsPage page={'BLOG'} />} />
-            <Route path={'/materials'} render={() => <PostsPage page={'MATERIALS'} />} />
+            <Route path={'/materials'} render={() => <StaticPage page={'MATERIALS'} />} />
             <Route path={'*'} render={() => <NotFoundPage />} />
           </Switch>
         </main>
